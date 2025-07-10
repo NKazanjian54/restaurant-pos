@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Node.js Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/server.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "runtimeArgs": ["--nolazy"],
+      "sourceMaps": false,
+      "cwd": "${workspaceFolder}/server",
+      "console": "integratedTerminal",
+      "restart": true
+    }
+  ]
+}
