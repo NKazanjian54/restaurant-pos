@@ -1,6 +1,6 @@
 // API Service - Centralized API calls
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+// Hardcoded for production deployment
+const API_BASE_URL = "https://restaurant-pos-06rx.onrender.com/api";
 
 class APIService {
   // Generic fetch wrapper
