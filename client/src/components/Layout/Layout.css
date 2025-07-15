@@ -1,0 +1,127 @@
+/* POS Layout Styles */
+.pos-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+}
+
+/* Header */
+.pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.restaurant-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.current-time {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+/* Main Content */
+.pos-main {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: #f8fafc;
+}
+
+/* Navigation */
+.pos-nav {
+  display: flex;
+  background-color: white;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-button:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.nav-button.active {
+  background-color: #667eea;
+  color: white;
+}
+
+.nav-button.active:hover {
+  background-color: #5a67d8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pos-header {
+    padding: 1rem;
+  }
+
+  .header-left {
+    gap: 1rem;
+  }
+
+  .restaurant-name {
+    font-size: 1.25rem;
+  }
+
+  .current-time {
+    font-size: 0.875rem;
+  }
+
+  .pos-main {
+    padding: 1rem;
+  }
+
+  .nav-button {
+    padding: 0.75rem;
+    font-size: 0.7rem;
+  }
+}

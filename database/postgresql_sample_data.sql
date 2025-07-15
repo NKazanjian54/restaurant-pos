@@ -1,3 +1,5 @@
+-- PostgreSQL Sample Data
+
 -- Insert sample categories
 INSERT INTO categories (name, description) VALUES 
 ('Burgers', 'All types of burgers'),
@@ -16,7 +18,7 @@ INSERT INTO products (name, description, price, category_id, sku, stock_quantity
 ('Sprite', 'Lemon-lime soda', 2.49, 3, 'BEV002', 150),
 ('Chocolate Shake', 'Rich chocolate milkshake', 4.99, 4, 'DES001', 25);
 
--- Insert sample admin user (password: admin123 - hashed with bcrypt)
+-- Insert sample users
 INSERT INTO users (username, email, password_hash, role, first_name, last_name) VALUES 
 ('admin', 'admin@restaurant.com', '$2b$10$rQZ1zXKjH4I8J5lHrY7I7.HJYbZbfRVAO1fV6.dYAFkKOkKDjLFYK', 'admin', 'Admin', 'User'),
 ('cashier1', 'cashier@restaurant.com', '$2b$10$rQZ1zXKjH4I8J5lHrY7I7.HJYbZbfRVAO1fV6.dYAFkKOkKDjLFYK', 'cashier', 'John', 'Doe');
