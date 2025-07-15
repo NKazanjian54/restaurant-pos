@@ -24,7 +24,9 @@ const POSInterface = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/products");
+      const response = await fetch(
+        "https://restaurant-pos-06rx.onrender.com/api/products"
+      );
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -36,7 +38,9 @@ const POSInterface = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/categories");
+      const response = await fetch(
+        "https://restaurant-pos-06rx.onrender.com/api/categories"
+      );
       const data = await response.json();
       setCategories(data);
     } catch (error) {
@@ -109,13 +113,16 @@ const POSInterface = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+      const response = await fetch(
+        "https://restaurant-pos-06rx.onrender.com/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
