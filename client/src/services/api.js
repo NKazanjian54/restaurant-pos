@@ -1,6 +1,4 @@
-// API Service - Centralized API calls
-// Hardcoded for production deployment
-const API_BASE_URL = "https://restaurant-pos-06rx.onrender.com/api";
+const API_BASE_URL = "https://restaurant-pos-06rx.onrender.com/api"; // Your Render URL
 
 class APIService {
   // Generic fetch wrapper
@@ -11,6 +9,7 @@ class APIService {
         "Content-Type": "application/json",
         ...options.headers,
       },
+      credentials: "include", // Important for session cookies
       ...options,
     };
 
@@ -28,34 +27,31 @@ class APIService {
     }
   }
 
-  // Product API calls
+  // Authentication API calls
+  async login(employeeId, pin, registerId) {
+    return this.request("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ employeeId, pin, registerId }),
+    });
+  }
+
+  async logout() {
+    return this.request("/auth/logout", {
+      method: "POST",
+    });
+  }
+
+  async validateSession() {
+    return this.request("/auth/validate");
+  }
+
+  // Existing methods...
   async getProducts() {
     return this.request("/products");
   }
 
-  async getProduct(id) {
-    return this.request(`/products/${id}`);
-  }
-
-  async createProduct(productData) {
-    return this.request("/products", {
-      method: "POST",
-      body: JSON.stringify(productData),
-    });
-  }
-
-  // Category API calls
   async getCategories() {
     return this.request("/categories");
-  }
-
-  // Order API calls
-  async getOrders() {
-    return this.request("/orders");
-  }
-
-  async getOrder(id) {
-    return this.request(`/orders/${id}`);
   }
 
   async createOrder(orderData) {

@@ -1,89 +1,38 @@
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-const fs = require("fs");
+const knex = require("knex");
 
-// Create database file path
-const dbPath = path.join(__dirname, "../database/restaurant_pos.db");
-
-// Ensure database directory exists
-const dbDir = path.dirname(dbPath);
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
-  console.log("Created database directory:", dbDir);
-}
-
-// Create database connection
-const db = new sqlite3.Database(dbPath, (err) => {
-  if (err) {
-    console.error("Error connecting to SQLite database:", err.message);
-    console.error("Database path:", dbPath);
-  } else {
-    console.log("Connected to SQLite database at:", dbPath);
-
-    // Enable foreign keys
-    db.run("PRAGMA foreign_keys = ON", (err) => {
-      if (err) {
-        console.error("Error enabling foreign keys:", err.message);
-      } else {
-        console.log("Foreign key constraints enabled");
-      }
-    });
-  }
+const db = knex({
+  client: "pg",
+  connection: {
+    host: "aws-0-us-east-2.pooler.supabase.com",
+    port: 5432,
+    user: "postgres.zroyslglclzgexunbbie",
+    password: "#BakedPotatoes54",
+    database: "postgres",
+    ssl: { rejectUnauthorized: false },
+  },
+  pool: {
+    min: 2,
+    max: 10,
+  },
 });
 
-// Promisify database methods for easier async/await usage
-const dbAsync = {
-  run: (sql, params = []) => {
-    return new Promise((resolve, reject) => {
-      db.run(sql, params, function (err) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve({ id: this.lastID, changes: this.changes });
-        }
-      });
-    });
-  },
+// Test connection
+const testConnection = async () => {
+  try {
+    console.log("🔗 Connecting via Session Pooler...");
+    const result = await db.raw("SELECT NOW() as current_time");
+    console.log("✅ Database connected successfully!");
+    console.log("✅ Database time:", result.rows[0].current_time);
 
-  get: (sql, params = []) => {
-    return new Promise((resolve, reject) => {
-      db.get(sql, params, (err, row) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(row);
-        }
-      });
-    });
-  },
-
-  all: (sql, params = []) => {
-    return new Promise((resolve, reject) => {
-      db.all(sql, params, (err, rows) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(rows);
-        }
-      });
-    });
-  },
-
-  serialize: (callback) => {
-    db.serialize(callback);
-  },
-
-  close: () => {
-    return new Promise((resolve, reject) => {
-      db.close((err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
-    });
-  },
+    // Verify users table
+    const userCount = await db("users").count("* as count");
+    console.log("✅ Users table accessible, count:", userCount[0].count);
+  } catch (error) {
+    console.error("❌ Database connection failed:", error.message);
+    process.exit(1);
+  }
 };
 
-module.exports = dbAsync;
+testConnection();
+
+module.exports = db;
