@@ -16,18 +16,31 @@ console.log(
 );
 
 // Middleware
+// In your server.js, replace the CORS section with this:
+
 app.use(
   cors({
     origin: [
-      "http://localhost:3000", // Development
-      "https://restaurant-pos-orcin.vercel.app", // Your actual Vercel URL
+      "http://localhost:3000",
+      "https://restaurant-pos-orcin.vercel.app",
       process.env.FRONTEND_URL,
     ],
-    credentials: true, // Essential for session cookies
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cookie",
+      "Set-Cookie",
+      "Access-Control-Allow-Credentials",
+    ],
+    exposedHeaders: ["Set-Cookie"],
+    optionsSuccessStatus: 200,
   })
 );
+
+// Add explicit OPTIONS handler
+app.options("*", cors());
 app.use(express.json());
 app.use(cookieParser()); // For session management
 

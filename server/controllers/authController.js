@@ -55,10 +55,11 @@ const login = async (req, res) => {
     if (result.success) {
       res.cookie("session_token", result.token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // HTTPS only in production
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict", // Cross-site for production
+        secure: true, // Always true for HTTPS
+        sameSite: "none", // Required for cross-origin (Vercel → Render)
         maxAge: 8 * 60 * 60 * 1000, // 8 hours
-        domain: process.env.NODE_ENV === "production" ? undefined : "localhost", // Let browser handle domain in prod
+        path: "/",
+        domain: undefined, // Let browser handle domain
       });
 
       return res.status(200).json({
