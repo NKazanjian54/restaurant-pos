@@ -6,6 +6,7 @@ import {
   CreditCard,
   DollarSign,
 } from "lucide-react";
+import APIService from "../../services/api";
 import "./POSInterface.css";
 
 const POSInterface = () => {
@@ -24,10 +25,7 @@ const POSInterface = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(
-        "https://restaurant-pos-06rx.onrender.com/api/products"
-      );
-      const data = await response.json();
+      const data = await APIService.getProducts();
       setProducts(data);
       setLoading(false);
     } catch (error) {
@@ -38,10 +36,7 @@ const POSInterface = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(
-        "https://restaurant-pos-06rx.onrender.com/api/categories"
-      );
-      const data = await response.json();
+      const data = await APIService.getCategories();
       setCategories(data);
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -113,24 +108,9 @@ const POSInterface = () => {
     };
 
     try {
-      const response = await fetch(
-        "https://restaurant-pos-06rx.onrender.com/api/orders",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-        }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        alert(`Order #${result.order_number} created successfully!`);
-        clearCart();
-      } else {
-        alert("Error creating order");
-      }
+      const result = await APIService.createOrder(orderData);
+      alert(`Order #${result.order_number} created successfully!`);
+      clearCart();
     } catch (error) {
       console.error("Error creating order:", error);
       alert("Error creating order");
