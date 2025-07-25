@@ -61,18 +61,7 @@ class APIService {
     });
   }
 
-  async updateOrderStatus(id, status) {
-    return this.request(`/orders/${id}/status`, {
-      method: "PATCH",
-      body: JSON.stringify({ status }),
-    });
-  }
-
-  // Database test
-  async testDatabase() {
-    return this.request("/test-db");
-  }
+  // ... rest of your existing methods
 }
 
-// Export a singleton instance
 export default new APIService();
