@@ -24,3 +24,5 @@ const App = () => {
     <POSInterface user={user} terminal={terminal} onLogout={handleLogout} />
   );
 };
+
+export default App;

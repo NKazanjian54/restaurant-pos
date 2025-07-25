@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./LoginPage.css";
+import "../services/api.js";
 
 // Register utility functions (included directly)
 const VALID_REGISTERS = ["REG01", "REG02", "REG03", "REG04"];
@@ -142,12 +143,12 @@ const LoginPage = ({ onLoginSuccess }) => {
     setError("");
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for session
+        credentials: "include", // This is crucial for cookies
         body: JSON.stringify({
           employeeId: employeeId.trim(),
           pin: pin.trim(),

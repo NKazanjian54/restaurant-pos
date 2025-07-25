@@ -18,8 +18,14 @@ console.log(
 // Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: [
+      "http://localhost:3000", // Development
+      "https://restaurant-pos-orcin.vercel.app", // Your actual Vercel URL
+      process.env.FRONTEND_URL,
+    ],
     credentials: true, // Essential for session cookies
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
   })
 );
 app.use(express.json());
