@@ -1,4 +1,4 @@
-/* Enhanced Login Page Styles */
+/* Enhanced Login Page Styles - Perfect Centering */
 .login-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -7,6 +7,7 @@
   justify-content: center;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 .login-container {
@@ -14,10 +15,14 @@
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  max-width: 480px;
   width: 100%;
+  max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
+  box-sizing: border-box;
+  /* Ensure perfect centering */
+  margin: 0 auto;
+  position: relative;
 }
 
 /* Header Styling */
@@ -26,6 +31,8 @@
   margin-bottom: 40px;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .login-header h1 {
@@ -33,6 +40,7 @@
   margin: 0 0 15px 0;
   font-size: 2.2rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .register-info {
@@ -41,6 +49,7 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 25px;
+  width: 100%;
 }
 
 .register-label {
@@ -65,6 +74,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  width: 100%;
 }
 
 .progress-step {
@@ -122,15 +132,23 @@
   margin: 0 20px;
 }
 
-/* Screen Content */
+/* Screen Content - Perfect Centering */
 .screen-content {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
 }
 
 .input-section {
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .input-section h2 {
@@ -138,6 +156,7 @@
   margin: 0 0 20px 0;
   font-size: 1.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .employee-reminder {
@@ -148,11 +167,16 @@
   margin-bottom: 15px;
   font-weight: 500;
   border-left: 4px solid #667eea;
+  text-align: center;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Main Input Fields */
+/* Main Input Fields - Perfect Centering */
 .main-input {
   width: 100%;
+  max-width: 400px;
   padding: 18px;
   border: 2px solid #e2e8f0;
   border-radius: 12px;
@@ -161,6 +185,9 @@
   letter-spacing: 3px;
   transition: all 0.3s ease;
   background: #fafbfc;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
 }
 
 .main-input:focus {
@@ -180,13 +207,15 @@
   font-weight: 600;
 }
 
-/* Enhanced Number Pad */
+/* Enhanced Number Pad - Perfect Centering */
 .number-pad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  max-width: 280px;
+  width: 280px;
   margin: 0 auto;
+  justify-items: center;
+  align-items: center;
 }
 
 .number-row {
@@ -194,6 +223,7 @@
 }
 
 .number-btn {
+  width: 80px;
   height: 65px;
   border: 2px solid #e2e8f0;
   border-radius: 12px;
@@ -206,6 +236,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .number-btn:hover:not(:disabled) {
@@ -252,10 +283,11 @@
   border-color: #d97706;
 }
 
-/* Action Buttons */
+/* Action Buttons - Perfect Centering */
 .proceed-btn,
 .login-btn {
   width: 100%;
+  max-width: 400px;
   padding: 16px 24px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -266,6 +298,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
 }
 
 .proceed-btn:hover:not(:disabled),
@@ -285,6 +320,10 @@
 .pin-actions {
   display: flex;
   gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .back-btn {
@@ -298,6 +337,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .back-btn:hover:not(:disabled) {
@@ -309,9 +349,11 @@
 .login-btn {
   flex: 2;
   margin: 0;
+  width: auto;
+  max-width: none;
 }
 
-/* Error Message */
+/* Error Message - Centered */
 .error-message {
   background: #fef2f2;
   color: #dc2626;
@@ -319,9 +361,13 @@
   border-radius: 10px;
   border-left: 4px solid #ef4444;
   font-weight: 500;
-  margin: 0;
+  margin: 0 auto;
   animation: slideIn 0.3s ease;
   box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
 @keyframes slideIn {
@@ -335,7 +381,7 @@
   }
 }
 
-/* Development Helper */
+/* Development Helper - Centered */
 .dev-helper {
   margin-top: 30px;
   padding: 16px;
@@ -343,6 +389,9 @@
   border-radius: 8px;
   border-left: 4px solid #f59e0b;
   font-size: 0.85rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dev-helper p {
@@ -352,9 +401,15 @@
 
 /* Responsive Design */
 @media (max-width: 600px) {
+  .login-page {
+    padding: 15px;
+  }
+
   .login-container {
     padding: 30px 20px;
-    margin: 10px;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
   }
 
   .login-header h1 {
@@ -362,11 +417,12 @@
   }
 
   .number-pad {
-    max-width: 240px;
+    width: 240px;
     gap: 10px;
   }
 
   .number-btn {
+    width: 70px;
     height: 55px;
     font-size: 1.1rem;
   }
@@ -374,11 +430,48 @@
   .main-input {
     font-size: 1.2rem;
     padding: 16px;
+    max-width: 100%;
   }
 
   .progress-line {
     width: 40px;
     margin: 0 15px;
+  }
+
+  .proceed-btn,
+  .login-btn {
+    max-width: 100%;
+  }
+
+  .pin-actions {
+    max-width: 100%;
+  }
+
+  .error-message {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 25px 15px;
+  }
+
+  .number-pad {
+    width: 210px;
+    gap: 8px;
+  }
+
+  .number-btn {
+    width: 60px;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .main-input {
+    font-size: 1.1rem;
+    padding: 14px;
+    letter-spacing: 2px;
   }
 }
 
@@ -410,4 +503,21 @@
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+
+/* Additional centering fixes */
+* {
+  box-sizing: border-box;
+}
+
+.screen-content > * {
+  align-self: center;
+}
+
+/* Ensure all flex children are centered */
+.login-container > *,
+.screen-content > *,
+.input-section > * {
+  margin-left: auto;
+  margin-right: auto;
 }
